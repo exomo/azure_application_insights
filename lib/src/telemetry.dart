@@ -226,7 +226,7 @@ class RequestTelemetryItem implements TelemetryItem {
         timestamp = timestamp ?? DateTime.now().toUtc();
 
   @override
-  String get envelopeName => 'AppRequests';
+  String get envelopeName => 'RemoteDependency';
 
   @override
   final DateTime timestamp;
@@ -260,12 +260,12 @@ class RequestTelemetryItem implements TelemetryItem {
     required TelemetryContext context,
   }) =>
       <String, dynamic>{
-        'baseType': 'RequestData',
+        'baseType': 'RemoteDependencyData',
         'baseData': <String, dynamic>{
           'ver': 2,
           'id': id,
           'duration': formatDurationForDotNet(duration),
-          'responseCode': responseCode,
+          'resultCode': responseCode,
           if (source != null) 'source': source,
           if (name != null) 'name': name,
           if (success != null) 'success': success,

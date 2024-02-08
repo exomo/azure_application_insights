@@ -235,7 +235,8 @@ class TransmissionProcessor implements Processor {
     final serializedContext =
         contextProperties.isEmpty ? null : contextProperties;
     final result = <String, dynamic>{
-      'name': contextualTelemetry.telemetryItem.envelopeName,
+      'name':
+          'Microsoft.ApplicationInsights.$instrumentationKey.${contextualTelemetry.telemetryItem.envelopeName}',
       'time': contextualTelemetry.telemetryItem.timestamp.toIso8601String(),
       'iKey': instrumentationKey,
       'tags': <String, dynamic>{
